@@ -1,54 +1,17 @@
-import {configureStore, createSlice} from "@reduxjs/toolkit";
-
-const moviesSlice = createSlice({
-    name: 'movie',
-    initialState: [],
-    reducers: {
-        addMovie(state, action) {
-            state.push(action.payload);
-        },
-        removeMovie(state, action) {
-            const index = state.indexOf(action.payload);
-            state.splice(index, 1);
-        }
-    }
-});
-
-//here is our REDUCER
-const songsSlice = createSlice({
-    name: 'song',
-    initialState: [],
-    reducers: {
-        //H we write about our ACTIONS
-        addSong(state, action) {
-            state.push(action.payload);
-            //Here, inside reducer, it's not the big store state, here is only part of state managed by this reducer
-            //When in other parts in app, state - means whole state in store
-            // The payload is the data that your reducer will use to update the state. For ex, here we get song as payload:
-        },
-        removeSong(state, action) {
-            const index = state.indexOf(action.payload);
-            state.splice(index, 1);
-            //   Find a song by indexOf and delete one by 1
-        },
-    }
-});
+import {configureStore} from "@reduxjs/toolkit";
+import {songsReducer, addSong, removeSong} from "./slices/songsSlice";
+import {moviesReducer, addMovie, removeMovie} from "./slices/moviesSlice";
+import {reset} from "./action";
 
 const store = configureStore({
     reducer: {
-        songs: songsSlice.reducer,
-        movies: moviesSlice.reducer
+        songs: songsReducer,
+        movies: moviesReducer
     }
 });
 
 export {store};
-//Action creator:
-export const {addSong, removeSong} = songsSlice.actions;
-export const {addMovie, removeMovie} = moviesSlice.actions;
-
-
-
-
+export {addMovie, removeMovie, addSong, removeSong, reset};
 
 /* //Example HOW RTK WORKS inside:
 //We usually don't interact directly to store,cause we have react-redux. But if we want - use getState() methode:
