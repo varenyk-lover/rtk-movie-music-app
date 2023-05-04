@@ -1,5 +1,5 @@
-# Movie and music app
-Here you can watch it —  
+# Movie and music playlist app
+Here you can watch it —  https://rtk-movie-music.netlify.app/
 
 Technologies: React, React redux toolkit, CSS.
 
@@ -8,7 +8,7 @@ Features:
 2. Buttons to delete movie or song from the list.
 3. Reset button to clear all lists.
 
-The main purpose was to create a mini app using ready layout and React redux toolkit.
+The main purpose was to create a mini app using React redux toolkit.
 
 
 # Getting Started with Create React App
